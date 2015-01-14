@@ -80,9 +80,9 @@
                    ^string ^:db/fulltext detection-type
                    ^string ^:db/fulltext mass-detection-type
                    ^string ^:db/fulltext radius-detection-type
-                   ^string ^:db/fulltext alternate-names
+                   ^string ^:db/fulltext ^:db/index alternate-names
                    ^string ^:db/fulltext molecules
-                   ^string ^:db/fulltext star-name
+                   ^string ^:db/fulltext ^:db/index star-name
                    ^float ra
                    ^float dec
                    ^float mag-v
@@ -90,10 +90,10 @@
                    ^float mag-j
                    ^float mag-h
                    ^float mag-k
-                   ^float star-distance
+                   ^float ^:db/index star-distance
                    ^float star-metallicity
-                   ^float star-mass
-                   ^float star-radius
+                   ^float ^:db/index star-mass
+                   ^float ^:db/index star-radius
                    ^string ^:db/fulltext star-sp-type
                    ^float ^:db/index star-age
                    ^float star-teff
@@ -137,4 +137,3 @@
                  ^string var
                  ^float var-min
                  ^float var-max])
-
