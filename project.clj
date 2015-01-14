@@ -8,6 +8,7 @@
                  [org.clojure/data.csv "0.1.2"]
                  [com.datomic/datomic-pro "0.9.5130" :exclusions [joda-time]]
                  [com.stuartsierra/component "0.2.2"]
+                 [co.vitallabs/entities "0.1.0-SNAPSHOT"]
                  [environ "1.0.0"]]
   :plugins [[lein-environ "1.0.0"]]
   :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.8"]]

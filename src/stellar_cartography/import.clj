@@ -3,11 +3,9 @@
             [clojure.java.shell :refer [sh]]
             [clojure.data.csv :as csv]
             [clojure.string :as str]
-            [clojure.core.async :as a
-             :refer [pipeline-blocking to-chan chan <!! go-loop <! >! put!]]
+            [clojure.core.async :as a :refer [pipeline to-chan chan <!!]]
             [environ.core :refer [env]]
             [datomic.api :as d :refer [q]]
-            [stellar-cartography.datomic :as db :refer [defentity]]
             [stellar-cartography.galaxy :as galaxy]))
 
 (defn slurp-gz
@@ -72,5 +70,5 @@
         ex-handler (fn [ex]
                      (.printStackTrace ex)
                      (throw ex))
-        _ (a/pipeline num-cpus to dataset-xf from true ex-handler)]
+        _ (pipeline num-cpus to dataset-xf from true ex-handler)]
     (while (<!! to))))

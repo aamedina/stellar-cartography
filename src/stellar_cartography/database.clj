@@ -1,7 +1,7 @@
 (ns stellar-cartography.database
   (:require [datomic.api :as d]
             [com.stuartsierra.component :as c]
-            [stellar-cartography.datomic :as db]
+            [entities.schema :as schema]
             [stellar-cartography.import :as import]))
 
 (defrecord Database [uri conn]
@@ -11,7 +11,7 @@
     (if conn
       this
       (let [conn (d/connect uri)
-            tx-data (db/resolve-schema)]
+            tx-data (schema/resolve-schema)]
         (println :loading-schema)
         (d/transact conn tx-data)
         (assoc this :conn conn))))

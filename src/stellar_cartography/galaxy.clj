@@ -1,6 +1,6 @@
 (ns stellar-cartography.galaxy
   (:require [datomic.api :as d :refer [q]]
-            [stellar-cartography.datomic :as db :refer [defentity]]))
+            [entities.core :as e :refer [defentity]]))
 
 (defentity deep-sky-object [^float ra
                             ^float dec
