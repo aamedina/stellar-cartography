@@ -6,7 +6,8 @@
             [clojure.core.async :as a :refer [pipeline to-chan chan <!!]]
             [environ.core :refer [env]]
             [datomic.api :as d :refer [q]]
-            [stellar-cartography.galaxy :as galaxy]))
+            [stellar-cartography.galaxy :as galaxy]
+            [stellar-cartography.galaxy.readers :as r]))
 
 (defn slurp-gz
   [path]
@@ -53,9 +54,9 @@
                          :stars galaxy/->star
                          :deep-sky-objects galaxy/->deep-sky-object)
                   rf (case k
-                       :exoplanets (row-reader galaxy/planet-readers)
-                       :stars (row-reader galaxy/star-readers)
-                       :deep-sky-objects (row-reader galaxy/deep-sky-readers))]
+                       :exoplanets (row-reader r/planet-readers)
+                       :stars (row-reader r/star-readers)
+                       :deep-sky-objects (row-reader r/deep-sky-readers))]
               (into [] (comp (map rf)
                              (map #(apply ctor (conj % nil)))
                              (map #(.asTransactable %))) (next v))))))

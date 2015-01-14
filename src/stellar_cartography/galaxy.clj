@@ -23,29 +23,6 @@
                             ^string ^:db/fulltext dupcat
                             ^string display-mag])
 
-
-(def deep-sky-readers
-  [#(Float/parseFloat %)
-   #(Float/parseFloat %)
-   identity
-   identity
-   #(Float/parseFloat %)
-   identity
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Long/parseLong %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   identity
-   identity
-   identity
-   identity
-   identity
-   identity
-   identity
-   identity])
-
 (defentity planet [^string ^:db/fulltext ^{:db/unique :db.unique/identity} name
                    ^float ^:db/index mass
                    ^float mass-error-min
@@ -123,94 +100,6 @@
                    ^float star-detected-disc
                    ^float star-magnetic-field])
 
-(defn read-date
-  [date]
-  (when date
-    (java.util.Date. (.replace date \- \/))))
-
-(defn read-year
-  [year]
-  (when year
-    (read-date (str "01/01/" year))))
-
-(def planet-readers
-  [identity
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %)
-   read-year
-   read-date
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %)
-   identity
-   identity
-   identity
-   identity
-   identity
-   identity
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %)
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   identity
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %)])
-
 (defentity star [^long ^{:db/unique :db.unique/identity} id
                  ^long ^:db/index hip
                  ^long ^:db/index hd
@@ -248,41 +137,4 @@
                  ^string var
                  ^float var-min
                  ^float var-max])
-(def star-readers
-  [#(Long/parseLong %)
-   #(Long/parseLong %)
-   #(Long/parseLong %)
-   #(Long/parseLong %)
-   identity
-   identity
-   identity
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   identity
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %) 
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)
-   identity
-   #(Long/parseLong %)
-   identity
-   #(Long/parseLong %)
-   #(Long/parseLong %)
-   identity
-   #(Double/parseDouble %)
-   identity
-   #(Float/parseFloat %)
-   #(Float/parseFloat %)])
+
